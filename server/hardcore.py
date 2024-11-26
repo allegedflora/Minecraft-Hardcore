@@ -126,13 +126,13 @@ def check_eula_agreement():
 def check_and_create_run_file(operating_system):
     if operating_system == "Linux":
         run_file_path = "./run.sh"
-        run_file_content = "java -Xmx2048M -Xms1024M -jar server.jar nogui"
+        run_file_content = "java -Xmx16384M -Xms8192M -jar fabric-server-launch.jar nogui"
     elif operating_system == "Windows":
         run_file_path = "run.bat"
-        run_file_content = "java -Xmx2048M -Xms1024M -jar server.jar nogui"
+        run_file_content = "java -Xmx16384M -Xms8192M -jar fabric-server-launch.jar nogui pause"
     elif operating_system == "Darwin":
         run_file_path = "./run.sh"
-        run_file_content = "java -Xmx2048M -Xms1024M -jar server.jar nogui"
+        run_file_content = "java -Xmx16384M -Xms8192M -jar fabric-server-launch.jar nogui"
     else:
         print(RED + "[!]\tUnsupported operating system." + RESET)
         return
@@ -177,13 +177,13 @@ def save_stats_to_file(stats):
 
 def player_died(player):
     print(RED + "[-]\tA player died" + RESET)
-    minecraft_process.stdin.write(f"say {player} died, the server will restart with a new world.\n")
+    minecraft_process.stdin.write(f"say {player} died, L bozo\n")
     minecraft_process.stdin.flush()
     time.sleep(1)
     print(RED + f"[-]\t{deaths}" + RESET)
     minecraft_process.stdin.write(f"say Here are the stats: {deaths}\n")
     minecraft_process.stdin.flush()
-    time.sleep(5)
+    time.sleep(1)
     return
 
 
